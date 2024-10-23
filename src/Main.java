@@ -7,7 +7,7 @@ public class Main {
         System.out.println("Hello and welcome!");
 
         // 按 Shift+F10 或点击装订区域中的绿色箭头按钮以运行脚本。
-        for (int i = 1; i <= 15; i++) {
+        for (int i = 1; i <= 7; i++) {
 
             // 按 Shift+F9 开始调试代码。我们已为您设置了一个断点，
             // 但您始终可以通过按 Ctrl+F8 添加更多断点。
