@@ -22,5 +22,6 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="tomcat" level="project" />
     <orderEntry type="library" name="annotations-api" level="project" />
+    <orderEntry type="library" name="Java EE 6" level="project" />
   </component>
 </module>
