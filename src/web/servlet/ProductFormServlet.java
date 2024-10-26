@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ProductFormServlet extends HttpServlet {
-    private static final String PRODUCT_FORM = "/WEB-INF/jsp/product.jsp";
+    private static final String PRODUCT_FORM = "/WEB-INF/jsp/catalog/product.jsp";
     private CatalogService catalogService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

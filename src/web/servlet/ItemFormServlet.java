@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class ItemFormServlet extends HttpServlet {
-    private static final String ITEM_FORM = "/WEB-INF/jsp/item.jsp";
+    private static final String ITEM_FORM = "/WEB-INF/jsp/catalog/item.jsp";
     private CatalogService catalogService;
 
 
@@ -29,3 +29,5 @@ public class ItemFormServlet extends HttpServlet {
         req.getRequestDispatcher(ITEM_FORM).forward(req,resp);
     }
 }
+
+// 存在问题：在购物车页面刷新会引起session内item的数量增加   (尚待解决)
