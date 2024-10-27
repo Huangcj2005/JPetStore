@@ -17,4 +17,19 @@ public class AccountService {
         account.setPassword(password);
         return accountDao.getAccountByUsernameAndPassword(account);
     }
+
+    public void insertAccount(Account account) {    // 注册用户
+        accountDao.insertAccount(account);
+        accountDao.insertProfile(account);
+        accountDao.insertSignon(account);
+    }
+
+    public void updateAccount(Account account) {    // 更新用户信息
+        accountDao.updateAccount(account);
+        accountDao.updateProfile(account);
+
+        if (account.getPassword() != null && account.getPassword().length() > 0) {
+            accountDao.updateSignon(account);
+        }
+    }
 }

@@ -41,6 +41,7 @@ public class SignOnServlet extends HttpServlet {
                 HttpSession session = req.getSession();     // 会话跟踪
                 session.setAttribute("loginAccount",loginAccount);
 
+
                 // 页面右侧 favorite
                 if(loginAccount.isListOption()){
                     CatalogService catalogService = new CatalogService();

@@ -104,4 +104,44 @@
         <url-pattern>/signOn</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NewAccountFormServlet</servlet-name>
+        <servlet-class>web.servlet.NewAccountFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewAccountFormServlet</servlet-name>
+        <url-pattern>/newAccountForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewAccountServlet</servlet-name>
+        <servlet-class>web.servlet.NewAccountServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewAccountServlet</servlet-name>
+        <url-pattern>/newAccount</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditAccountFormServlet</servlet-name>
+        <servlet-class>web.servlet.EditAccountFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditAccountFormServlet</servlet-name>
+        <url-pattern>/editAccountForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <servlet-class>web.servlet.EditAccountServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <url-pattern>/editAccount</url-pattern>
+    </servlet-mapping>
+
 </web-app>
