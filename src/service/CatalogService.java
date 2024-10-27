@@ -1,5 +1,11 @@
 package service;
 
+import dao.CategoryDao;
+import dao.ItemDao;
+import dao.ProductDao;
+import dao.impl.CategoryDaoImpl;
+import dao.impl.ItemDaoImpl;
+import dao.impl.ProductDaoImpl;
 import domain.Category;
 import domain.Item;
 import domain.Product;
@@ -25,7 +31,7 @@ public class CatalogService {
     }
 
     public Product getProduct(String productId) {
-        return categoryDao.getProduct(productId);
+        return productDao.getProduct(productId);
     }
 
     public List<Product> getProductListByCategory(String categoryId) {

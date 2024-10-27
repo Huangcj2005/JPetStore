@@ -74,4 +74,34 @@
         <url-pattern>/cartForm</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SignOnFormServlet</servlet-name>
+        <servlet-class>web.servlet.SignOnFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignOnFormServlet</servlet-name>
+        <url-pattern>/signonForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewOrderFormServlet</servlet-name>
+        <servlet-class>web.servlet.NewOrderFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewOrderFormServlet</servlet-name>
+        <url-pattern>/newOrderForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignOnServlet</servlet-name>
+        <servlet-class>web.servlet.SignOnServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignOnServlet</servlet-name>
+        <url-pattern>/signOn</url-pattern>
+    </servlet-mapping>
+
 </web-app>
