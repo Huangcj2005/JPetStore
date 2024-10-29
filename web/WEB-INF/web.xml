@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    
+
     <servlet>
         <servlet-name>MainFormServlet</servlet-name>
         <servlet-class>web.servlet.MainFormServlet</servlet-class>
@@ -13,10 +13,21 @@
         <servlet-name>MainFormServlet</servlet-name>
         <url-pattern>/mainForm</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SearchProductServlet</servlet-name>
+        <servlet-class>web.servlet.SearchProductServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SearchProductServlet</servlet-name>
+        <url-pattern>/searchProduct</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>CategoryFormServlet</servlet-name>
-        <servlet-class>web.servlet.CategoryFormServlet</servlet-class>
+        <servlet-class>web.servlet.cart.CategoryFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -26,7 +37,7 @@
 
     <servlet>
         <servlet-name>ProductFormServlet</servlet-name>
-        <servlet-class>web.servlet.ProductFormServlet</servlet-class>
+        <servlet-class>web.servlet.cart.ProductFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -36,7 +47,7 @@
 
     <servlet>
         <servlet-name>AddItemToCartServlet</servlet-name>
-        <servlet-class>web.servlet.AddItemToCartServlet</servlet-class>
+        <servlet-class>web.servlet.cart.AddItemToCartServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -46,7 +57,7 @@
 
     <servlet>
         <servlet-name>UpdateCartServlet</servlet-name>
-        <servlet-class>web.servlet.UpdateCartItemServlet</servlet-class>
+        <servlet-class>web.servlet.cart.UpdateCartItemServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -56,7 +67,7 @@
 
     <servlet>
         <servlet-name>UpdateCartItemServlet</servlet-name>
-        <servlet-class>web.servlet.UpdateCartItemServlet</servlet-class>
+        <servlet-class>web.servlet.cart.UpdateCartItemServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -66,7 +77,7 @@
 
     <servlet>
         <servlet-name>CartFormServlet</servlet-name>
-        <servlet-class>web.servlet.CartFormServlet</servlet-class>
+        <servlet-class>web.servlet.cart.CartFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -74,9 +85,10 @@
         <url-pattern>/cartForm</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>SignOnFormServlet</servlet-name>
-        <servlet-class>web.servlet.SignOnFormServlet</servlet-class>
+        <servlet-class>web.servlet.account.SignOnFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -85,18 +97,8 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>NewOrderFormServlet</servlet-name>
-        <servlet-class>web.servlet.NewOrderFormServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>NewOrderFormServlet</servlet-name>
-        <url-pattern>/newOrderForm</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>SignOnServlet</servlet-name>
-        <servlet-class>web.servlet.SignOnServlet</servlet-class>
+        <servlet-class>web.servlet.account.SignOnServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -104,9 +106,10 @@
         <url-pattern>/signOn</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>NewAccountFormServlet</servlet-name>
-        <servlet-class>web.servlet.NewAccountFormServlet</servlet-class>
+        <servlet-class>web.servlet.account.NewAccountFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -116,7 +119,7 @@
 
     <servlet>
         <servlet-name>NewAccountServlet</servlet-name>
-        <servlet-class>web.servlet.NewAccountServlet</servlet-class>
+        <servlet-class>web.servlet.account.NewAccountServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -124,9 +127,10 @@
         <url-pattern>/newAccount</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>EditAccountFormServlet</servlet-name>
-        <servlet-class>web.servlet.EditAccountFormServlet</servlet-class>
+        <servlet-class>web.servlet.account.EditAccountFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -136,12 +140,53 @@
 
     <servlet>
         <servlet-name>EditAccountServlet</servlet-name>
-        <servlet-class>web.servlet.EditAccountServlet</servlet-class>
+        <servlet-class>web.servlet.account.EditAccountServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>EditAccountServlet</servlet-name>
         <url-pattern>/editAccount</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>NewOrderFormServlet</servlet-name>
+        <servlet-class>web.servlet.order.NewOrderFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewOrderFormServlet</servlet-name>
+        <url-pattern>/newOrderForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewOrderServlet</servlet-name>
+        <servlet-class>web.servlet.order.NewOrderServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewOrderServlet</servlet-name>
+        <url-pattern>/newOrder</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewOrderFormServlet</servlet-name>
+        <servlet-class>web.servlet.order.ViewOrderFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewOrderFormServlet</servlet-name>
+        <url-pattern>/viewOrderForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewOrderListFormServlet</servlet-name>
+        <servlet-class>web.servlet.order.ViewOrderListFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewOrderListFormServlet</servlet-name>
+        <url-pattern>/viewOrderList</url-pattern>
     </servlet-mapping>
 
 </web-app>

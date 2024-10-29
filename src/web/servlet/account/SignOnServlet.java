@@ -1,4 +1,4 @@
-package web.servlet;
+package web.servlet.account;
 
 import domain.Account;
 import domain.Product;

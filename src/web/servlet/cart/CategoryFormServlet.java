@@ -1,4 +1,4 @@
-package web.servlet;
+package web.servlet.cart;
 
 import domain.Category;
 import domain.Product;
