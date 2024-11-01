@@ -1,16 +1,21 @@
-package web.servlet;
+package web.servlet.account;
 
 import domain.Account;
+import domain.Product;
 import service.AccountService;
+import service.CatalogService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
-public class EditAccountServlet extends HttpServlet {
-    private static final String EDIT_ACCOUNT_FORM = "/WEB-INF/jsp/account/editAccount.jsp";   // 编辑失败时跳转
+public class NewAccountServlet extends HttpServlet {
+
+    private static final String NEW_ACCOUNT_FORM = "/WEB-INF/jsp/account/newAccount.jsp";   // 注册成功时跳转
     private String msg;
     private String username;
     private String password;
@@ -29,6 +34,7 @@ public class EditAccountServlet extends HttpServlet {
     private String languagePreference;
     private boolean listOption;
     private boolean bannerOption;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         username = req.getParameter("username");
@@ -51,19 +57,23 @@ public class EditAccountServlet extends HttpServlet {
 
         // 检验合法性
         if(!validate()){
-            req.setAttribute("editMsg",this.msg); // 用于jsp中获取错误提示信息
-            req.getRequestDispatcher(EDIT_ACCOUNT_FORM).forward(req,resp);
+            req.setAttribute("registerMsg",this.msg); // 用于jsp中获取错误提示信息
+            req.getRequestDispatcher(NEW_ACCOUNT_FORM).forward(req,resp);
         }else{
             AccountService accountService = new AccountService();
-            Account updateAccount = new Account();
-            initAccount(updateAccount);
-            accountService.updateAccount(updateAccount);  // 修改数据库信息
+            Account registerAccount = new Account();
+            initAccount(registerAccount);
+            accountService.insertAccount(registerAccount);  // 写入数据库
 
-            resp.sendRedirect("mainForm");    // 跳转回购物主界面
+            resp.sendRedirect("signonForm");    // 跳转回登录界面
         }
-
     }
+
     private boolean validate(){
+        if(this.username == null || this.username.equals("")){
+            msg = "用户名不能为空！";
+            return false;
+        }
         if(this.password == null || this.password.equals("")){
             msg = "密码不能为空！";
             return false;
@@ -76,7 +86,7 @@ public class EditAccountServlet extends HttpServlet {
             msg = "两次输入的密码不一致，请重新输入！";
             return false;
         }
-        // 其他部分的判断逻辑
+
         return true;
     }
 
@@ -100,3 +110,4 @@ public class EditAccountServlet extends HttpServlet {
         account.setBannerOption(this.bannerOption);
     }
 }
+// account中的status尚未使用过

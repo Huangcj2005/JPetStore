@@ -79,4 +79,8 @@ public class CartService {
         return subTotal;
     }
 
+    public void clear() {
+        cart = new Cart();
+//        workingItemId = null;
+    }
 }

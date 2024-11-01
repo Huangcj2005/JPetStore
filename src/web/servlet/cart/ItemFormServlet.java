@@ -1,4 +1,4 @@
-package web.servlet;
+package web.servlet.cart;
 
 import domain.Item;
 import domain.Product;
@@ -10,21 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
-public class ProductFormServlet extends HttpServlet {
-    private static final String PRODUCT_FORM = "/WEB-INF/jsp/catalog/product.jsp";
+public class ItemFormServlet extends HttpServlet {
+    private static final String ITEM_FORM = "/WEB-INF/jsp/catalog/item.jsp";
     private CatalogService catalogService;
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String productId = req.getParameter("productId");
+        String itemId = req.getParameter("itemId");
         catalogService = new CatalogService();
-        Product product = catalogService.getProduct(productId);
-        List<Item> itemList = catalogService.getItemListByProduct(productId);
+        Item item = catalogService.getItem(itemId);
+        Product product = catalogService.getProduct(item.getProductId());
 
         HttpSession session = req.getSession();
+        session.setAttribute("item",item);
         session.setAttribute("product",product);
-        session.setAttribute("itemList",itemList);
-        req.getRequestDispatcher(PRODUCT_FORM).forward(req,resp);
+        req.getRequestDispatcher(ITEM_FORM).forward(req,resp);
     }
 }
+
+// 存在问题：在购物车页面刷新会引起session内item的数量增加   (尚待解决)

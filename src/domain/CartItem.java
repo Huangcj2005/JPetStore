@@ -1,5 +1,7 @@
 package domain;
 
+import service.CartItemService;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
@@ -32,7 +34,9 @@ public class CartItem implements Serializable {
 
     public void setItem(Item item) {
         this.item = item;
-        calculateTotal();
+        CartItemService cartItemService = new CartItemService(this);
+        cartItemService.calculateTotal();
+//        calculateTotal();
     }
 
     public int getQuantity() {
@@ -41,19 +45,22 @@ public class CartItem implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-        calculateTotal();
+        CartItemService cartItemService = new CartItemService(this);
+        cartItemService.calculateTotal();
+//        calculateTotal();
     }
 
-    public void incrementQuantity() {
-        quantity++;
-        calculateTotal();
-    }
+//
+//    public void incrementQuantity() {
+//        quantity++;
+//        calculateTotal();
+//    }
 
-    private void calculateTotal() {
-        if (item != null && item.getListPrice() != null) {
-            total = item.getListPrice().multiply(new BigDecimal(quantity));
-        } else {
-            total = null;
-        }
-    }
+//    private void calculateTotal() {
+//        if (item != null && item.getListPrice() != null) {
+//            total = item.getListPrice().multiply(new BigDecimal(quantity));
+//        } else {
+//            total = null;
+//        }
+//    }
 }

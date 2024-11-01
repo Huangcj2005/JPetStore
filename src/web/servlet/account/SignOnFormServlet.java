@@ -1,4 +1,4 @@
-package web.servlet;
+package web.servlet.account;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
