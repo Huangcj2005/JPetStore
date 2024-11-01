@@ -35,6 +35,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>ItemFormServlet</servlet-name>
+        <servlet-class>web.servlet.ItemFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ItemFormServlet</servlet-name>
+        <url-pattern>/ItemForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddItemToCartServlet</servlet-name>
         <servlet-class>web.servlet.AddItemToCartServlet</servlet-class>
     </servlet>

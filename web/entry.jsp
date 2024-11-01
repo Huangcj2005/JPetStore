@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>商店入口</title>
+    <link rel="StyleSheet" href="css/petstore.css" type="text/css" media="screen"/>
 </head>
 <body>
 <div id="Content">
