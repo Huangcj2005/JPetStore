@@ -2,7 +2,6 @@ package dao.impl;
 
 import dao.ItemDao;
 import domain.Item;
-import domain.Product;
 import persistence.DBUtil;
 
 import java.sql.Connection;
@@ -171,9 +170,7 @@ public class ItemDaoImpl implements ItemDao {
                 item.setAttribute3(resultSet.getString("attribute3"));
                 item.setAttribute4(resultSet.getString("attribute4"));
                 item.setAttribute5(resultSet.getString("attribute5"));
-                item.setQuantity(resultSet.getInt("QTY"));
-                Product product = new Product();
-                item.setProduct(product);
+                item.setQuantity(resultSet.getInt("quantity"));
             }
             resultSet.close();
             preparedStatement.close();

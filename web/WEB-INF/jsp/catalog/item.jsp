@@ -1,3 +1,4 @@
+<%@ page import="domain.Item" %>
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
@@ -6,6 +7,7 @@
 
 <div id="Catalog">
 
+    <form action="addItemToCart" method="post">
     <table>
         <tr>
             <td>${sessionScope.product.description}</td>
@@ -23,27 +25,32 @@
             <td>${sessionScope.product.name}</td>
         </tr>
         <tr>
-            <td><c:if test="${sessionScope.item.quantity <= 0}">
-                Back ordered.
-            </c:if> <c:if test="${sessionScope.item.quantity > 0}">
-                ${sessionScope.item.quantity} in stock.
-            </c:if></td>
+            <td>
+                <%
+                    Item item = (Item) session.getAttribute("item");
+                    if(item.getQuantity() <= 0){
+                        out.println("Back ordered.");
+                    }else {
+                        out.println(item.getQuantity()+" in stock.");
+                    }
+                %>
+            </td>
         </tr>
         <tr>
-            <td><fmt:formatNumber value="${sessionScope.item.listPrice}"
-                                  pattern="$#,##0.00" /></td>
+            <td>
+                <%
+                    out.println("$"+item.getListPrice());
+                %>
+            </td>
         </tr>
 
         <tr>
-            <td><stripes:link class="Button"
-                              beanclass="org.mybatis.jpetstore.web.actions.CartActionBean"
-                              event="addItemToCart">
-                <stripes:param name="workingItemId" value="${sessionScope.item.itemId}" />
-                Add to Cart
-            </stripes:link></td>
+            <td>
+                <a href="addItemToCart?workingItemId=${sessionScope.item.itemId}" class=Button>Add to Cart</a>
+            </td>
         </tr>
     </table>
-
+    </form>
 </div>
 
 <%@ include file="../common/bottom.jsp"%>

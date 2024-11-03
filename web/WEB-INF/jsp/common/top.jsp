@@ -19,7 +19,7 @@
 
     <div id="Menu">
         <div id="MenuContent">
-            <a href="#"><img align="middle" name="img_cart" src="images/cart.gif" /></a>
+            <a href="cartForm"><img align="middle" name="img_cart" src="images/cart.gif" /></a>
 
             <img align="middle" src="images/separator.gif" />
 

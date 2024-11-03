@@ -1,16 +1,85 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Huang_cj
-  Date: 2024/10/26
-  Time: 15:42
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ page import="domain.Cart" %>
+<%@ page import="domain.CartItem" %>
+<%@ page import="java.util.List" %>
+<%@ include file="../common/top.jsp"%>
 
-</body>
-</html>
+<div id="BackLink">
+    <a href="mainForm">Return to Main Menu</a>
+</div>
+
+<div id="Catalog">
+
+    <div id="Cart">
+
+        <h2>Shopping Cart</h2>
+
+        <form action="updateCart" method="post">
+            <table>
+                <tr>
+                    <th><b>Item ID</b></th>
+                    <th><b>Product ID</b></th>
+                    <th><b>Description</b></th>
+                    <th><b>In Stock?</b></th>
+                    <th><b>Quantity</b></th>
+                    <th><b>List Price</b></th>
+                    <th><b>Total Cost</b></th>
+                    <th>&nbsp;</th>
+                </tr>
+
+                <%
+                    Cart cart = (Cart) session.getAttribute("cart");
+                    if(cart.getNumberOfItems()==0){
+                        out.println("<tr><td colspan=\"8\"><b>Your cart is empty.</b></td></tr>");
+                    } else {
+                        List<CartItem> CartItems = cart.getItemList();
+                        for(CartItem cartItem : CartItems){
+                            out.println(
+                                "<tr>"+
+                                    "<td><a href=ItemForm?itemId="+ cartItem.getItem().getItemId() + ">" + cartItem.getItem().getItemId() +"</a></td>"+
+                                    "<td>" + cartItem.getItem().getProduct().getProductId() + "</td>" +
+                                    "<td>" + cartItem.getItem().getAttribute1() + cartItem.getItem().getProduct().getName() +"</td>"+
+                                    "<td>" + cartItem.isInStock() + "</td>" +
+                                    "<td><input  type=text name="+ cartItem.getItem().getItemId() +" value="+ cartItem.getQuantity() +" ></td>"+
+                                    "<td>$"+ cartItem.getItem().getListPrice()+"</td>"+
+                                    "<td>$"+ cartItem.getTotal()+"</td>"+
+                                    "<td><a href=removeCartItem?cartItemId="+ cartItem.getItem().getItemId() +" class=Button>Remove</a></td>"+
+                                "</tr>"
+                            );
+                        }
+                    }
+                %>
+
+                <tr>
+                    <td colspan="7">
+                        Sub Total:
+                        <%
+                            out.println("$"+cart.getSubTotal());
+                        %>
+                        <input type="submit" value="Update Cart">
+                    </td>
+                    <td> </td>
+                </tr>
+            </table>
+        </form>
+
+
+
+        <c:if test="${sessionScope.cart.numberOfItems > 0}">
+            <a href="newOrderForm" class="Button">Proceed to Checkout</a>
+        </c:if>
+    </div>
+
+<%--    <div id="MyList">--%>
+<%--        <c:if test="${sessionScope.accountBean != null}">--%>
+<%--            <c:if test="${!sessionScope.accountBean.authenticated}">--%>
+<%--                <c:if test="${!empty sessionScope.accountBean.account.listOption}">--%>
+<%--                    <%@ include file="IncludeMyList.jsp"%>--%>
+<%--                </c:if>--%>
+<%--            </c:if>--%>
+<%--        </c:if>--%>
+<%--    </div>--%>
+
+    <div id="Separator">&nbsp;</div>
+</div>
+
+<%@ include file="../common/bottom.jsp"%>

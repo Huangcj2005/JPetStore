@@ -27,7 +27,7 @@
                         "<td>"+item.getProductId()+"</td>" +
                         "<td>"+item.getAttribute1()+"</td>" +
                         "<td>$"+item.getListPrice()+"</td>"+
-                        "<td><a href=\"\" class=Button>Add to Cart</a>\n</td>" +
+                        "<td><a href=addItemToCart?workingItemId="+ item.getItemId()+" class=Button>Add to Cart</a></td>" +
                         "</tr>");
             }
         %>

@@ -29,7 +29,7 @@ public class CartService {
     }
 
     public void addItem(Item item, boolean isInStock) {
-        CartItem cartItem = (CartItem) cart.getItemMap().get(item.getItemId());
+        CartItem cartItem = cart.getItemMap().get(item.getItemId());
         if (cartItem == null) {
             cartItem = new CartItem();
             cartItem.setItem(item);
@@ -41,7 +41,6 @@ public class CartService {
 
         CartItemService cartItemService = new CartItemService(cartItem);
         cartItemService.incrementQuantity();
-        cartItemService = null;
     }
 
     public Item removeItemById(String itemId) {
@@ -55,14 +54,13 @@ public class CartService {
     }
 
     public void incrementQuantityByItemId(String itemId) {
-        CartItem cartItem = (CartItem) cart.getItemMap().get(itemId);
+        CartItem cartItem = cart.getItemMap().get(itemId);
         CartItemService cartItemService = new CartItemService(cartItem);
         cartItemService.incrementQuantity();
-        cartItemService = null;
     }
 
     public void setQuantityByItemId(String itemId, int quantity) {
-        CartItem cartItem = (CartItem) cart.getItemMap().get(itemId);
+        CartItem cartItem = cart.getItemMap().get(itemId);
         cartItem.setQuantity(quantity);
     }
 

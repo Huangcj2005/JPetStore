@@ -48,7 +48,9 @@ public class CatalogService {
     }
 
     public Item getItem(String itemId) {
-        return itemDao.getItem(itemId);
+        Item item = itemDao.getItem(itemId);
+        item.setProduct(productDao.getProduct(item.getProductId()));
+        return item;
     }
 
     public boolean isItemInStock(String itemId) {

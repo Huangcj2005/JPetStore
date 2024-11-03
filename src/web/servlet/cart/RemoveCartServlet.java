@@ -20,8 +20,8 @@ public class RemoveCartServlet extends HttpServlet {
         Cart cart = (Cart) session.getAttribute("cart");
         CartService cartService = new CartService(cart);
 
-        String workingItemId = req.getParameter("workingId");
-        Item item = cartService.removeItemById(workingItemId);
+        String cartItemId = req.getParameter("cartItemId");
+        Item item = cartService.removeItemById(cartItemId);
 
         if (item == null) { // 删除失败
             req.getRequestDispatcher(ERROR_FORM).forward(req,resp);

@@ -27,9 +27,12 @@ public class Cart implements Serializable {
     public List<CartItem> getItemList() {
         return itemList;
     }
+
     public Iterator<CartItem> getAllCartItems() {
         return itemList.iterator();
     }
+
+
 //    public boolean containsItemId(String itemId) {
 //        return itemMap.containsKey(itemId);
 //    }
@@ -67,16 +70,16 @@ public class Cart implements Serializable {
 //        cartItem.setQuantity(quantity);
 //    }
 //
-//    public BigDecimal getSubTotal() {
-//        BigDecimal subTotal = new BigDecimal("0");
-//        Iterator<CartItem> items = getAllCartItems();
-//        while (items.hasNext()) {
-//            CartItem cartItem = (CartItem) items.next();
-//            Item item = cartItem.getItem();
-//            BigDecimal listPrice = item.getListPrice();
-//            BigDecimal quantity = new BigDecimal(String.valueOf(cartItem.getQuantity()));
-//            subTotal = subTotal.add(listPrice.multiply(quantity));
-//        }
-//        return subTotal;
-//    }
+    public BigDecimal getSubTotal() {
+        BigDecimal subTotal = new BigDecimal("0");
+        Iterator<CartItem> items = getAllCartItems();
+        while (items.hasNext()) {
+            CartItem cartItem = items.next();
+            Item item = cartItem.getItem();
+            BigDecimal listPrice = item.getListPrice();
+            BigDecimal quantity = new BigDecimal(String.valueOf(cartItem.getQuantity()));
+            subTotal = subTotal.add(listPrice.multiply(quantity));
+        }
+        return subTotal;
+    }
 }
