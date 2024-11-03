@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 // 跳转至新建订单
 public class NewOrderFormServlet extends HttpServlet {
-    private static final String NEW_ORDER = "/WEB-INF/jsp/order/newOrder.jsp";
-    private static final String ERROR ="/WEB-INF/jsp/common/error.jsp";
+    private static final String NEW_ORDER_FORM = "/WEB-INF/jsp/order/newOrder.jsp";
+    private static final String ERROR_FORM ="/WEB-INF/jsp/common/error.jsp";
     private Order order = new Order();
+    private String msg;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,10 +30,12 @@ public class NewOrderFormServlet extends HttpServlet {
             resp.sendRedirect("signonForm");
         } else if (cart != null) {  // 跳转至新建订单页面
             order.initOrder(loginAccount, cart);
-            session.setAttribute("newOrder",order);
-            req.getRequestDispatcher(NEW_ORDER).forward(req,resp);
+            session.setAttribute("order",order);    // 将 order 放进session中
+            req.getRequestDispatcher(NEW_ORDER_FORM).forward(req,resp);
         } else {    // 用户购物车为空
-            req.getRequestDispatcher(ERROR);
+            msg = "";
+            req.setAttribute("errorMsg",msg);
+            req.getRequestDispatcher(ERROR_FORM);
         }
     }
 }
