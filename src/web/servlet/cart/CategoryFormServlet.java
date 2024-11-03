@@ -29,6 +29,7 @@ public class CategoryFormServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
 
+        session.setAttribute("flag",1);
         session.setAttribute("category",category);
         session.setAttribute("productList",productList);
 

@@ -16,6 +16,8 @@ import java.util.List;
 public class SignOnServlet extends HttpServlet {
     private String username;
     private String password;
+    private String verifyCode;
+    private String cacheCode;   // 校验用
     private String msg;
 
     private static final String SIGN_ON_FORM = "/WEB-INF/jsp/account/signon.jsp";
@@ -24,8 +26,11 @@ public class SignOnServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         username = req.getParameter("username");
         password = req.getParameter("password");
+        verifyCode = req.getParameter("verifyCode");
 
-        // 检验用户名密码的合法性
+        cacheCode = (String) req.getSession().getAttribute("verifyCode");
+
+        // 检验合法性
         if(!validate()){
             req.setAttribute("signOnMsg",this.msg); // 用于jsp中获取错误提示信息
             req.getRequestDispatcher(SIGN_ON_FORM).forward(req,resp);
@@ -41,7 +46,6 @@ public class SignOnServlet extends HttpServlet {
                 HttpSession session = req.getSession();     // 会话跟踪
                 session.setAttribute("loginAccount",loginAccount);
 
-
                 // 页面右侧 favorite
                 if(loginAccount.isListOption()){
                     CatalogService catalogService = new CatalogService();
@@ -55,6 +59,14 @@ public class SignOnServlet extends HttpServlet {
     }
 
     private boolean validate(){
+        if(this.verifyCode == null || this.verifyCode.equals("")){
+            msg = "请输入验证码！";
+            return false;
+        }
+        if(!this.verifyCode.equals(this.cacheCode)){
+            msg = "验证码错误！";
+            return false;
+        }
         if(this.username == null || this.username.equals("")){
             msg = "用户名不能为空！";
             return false;

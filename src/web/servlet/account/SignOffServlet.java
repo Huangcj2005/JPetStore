@@ -6,11 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class NewAccountFormServlet extends HttpServlet {
-    private static final String NEW_ACCOUNT_FORM = "/WEB-INF/jsp/account/newAccount.jsp";
+public class SignOffServlet extends HttpServlet {
+    private static final String SIGN_ON_FORM = "/WEB-INF/jsp/account/signon.jsp";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().setAttribute("flag",1);
-        req.getRequestDispatcher(NEW_ACCOUNT_FORM).forward(req,resp);
+        req.getSession().invalidate();    // 结束用户对话
+        req.getRequestDispatcher(SIGN_ON_FORM).forward(req,resp);
     }
 }

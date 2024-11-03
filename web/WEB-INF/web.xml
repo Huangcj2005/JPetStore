@@ -116,6 +116,16 @@
         <url-pattern>/signOn</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SignOffServlet</servlet-name>
+        <servlet-class>web.servlet.account.SignOffServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignOffServlet</servlet-name>
+        <url-pattern>/signOff</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>NewAccountFormServlet</servlet-name>
@@ -190,13 +200,53 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ViewOrderListFormServlet</servlet-name>
-        <servlet-class>web.servlet.order.ViewOrderListFormServlet</servlet-class>
+    <servlet-name>ViewOrderListFormServlet</servlet-name>
+    <servlet-class>web.servlet.order.ViewOrderListFormServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>ViewOrderListFormServlet</servlet-name>
         <url-pattern>/viewOrderList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShippingFormServlet</servlet-name>
+        <servlet-class>web.servlet.order.ShippingFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShippingFormServlet</servlet-name>
+        <url-pattern>/shippingForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShippingServlet</servlet-name>
+        <servlet-class>web.servlet.order.ShippingServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShippingServlet</servlet-name>
+        <url-pattern>/shipping</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ConfirmFormServlet</servlet-name>
+        <servlet-class>web.servlet.order.ConfirmFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ConfirmFormServlet</servlet-name>
+        <url-pattern>/confirmForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VerifyCodeServlet</servlet-name>
+        <servlet-class>web.servlet.VerifyCodeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VerifyCodeServlet</servlet-name>
+        <url-pattern>/verifyCode</url-pattern>
     </servlet-mapping>
 
 </web-app>

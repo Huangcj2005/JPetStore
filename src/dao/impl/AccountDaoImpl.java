@@ -2,7 +2,7 @@ package dao.impl;
 
 import dao.AccountDao;
 import domain.Account;
-import persistence.DBUtil;
+import dao.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

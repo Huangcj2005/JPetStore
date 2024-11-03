@@ -22,6 +22,7 @@ public class SearchProductServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute("viewProduct",viewProduct);
+        session.setAttribute("flag",1);
 
         req.getRequestDispatcher(SEARCH_PRODUCT_FORM).forward(req,resp);
     }

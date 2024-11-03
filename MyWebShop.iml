@@ -23,5 +23,7 @@
     <orderEntry type="library" name="tomcat" level="project" />
     <orderEntry type="library" name="Java EE 6 (2)" level="project" />
     <orderEntry type="library" name="mysql-connector-j-8.0.33" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.11" level="project" />
   </component>
 </module>
