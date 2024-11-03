@@ -1,3 +1,4 @@
+<%@ page import="domain.Account" %>
 </div>
 
 <div id="Footer">
@@ -6,7 +7,14 @@
     </div>
 
     <div id="Banner">
-        <!-- 已经登录用户的偏好 -->
+        <%
+            if(session.getAttribute("account") != null){
+                Account account = (Account)session.getAttribute("account");
+                if(account.isBannerOption()){
+                    out.println(account.getBannerName());
+                }
+            }
+        %>
     </div>
 
 </div>

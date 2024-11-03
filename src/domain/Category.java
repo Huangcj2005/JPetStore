@@ -3,7 +3,7 @@ package domain;
 import java.io.Serializable;
 
 public class Category implements Serializable {
-    private String  categoryId;
+    private String categoryId;
     private String name;
     private String description;
 
