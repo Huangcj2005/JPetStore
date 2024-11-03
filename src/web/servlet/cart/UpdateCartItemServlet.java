@@ -19,6 +19,7 @@ public class UpdateCartItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
+        session.setAttribute("flag",1);
         CartService cartService = new CartService(cart);
         Iterator<CartItem> cartItems = cartService.getAllCartItems();       // 迭代器
 

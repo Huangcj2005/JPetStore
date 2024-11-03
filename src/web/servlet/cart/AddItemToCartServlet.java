@@ -22,6 +22,7 @@ public class AddItemToCartServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         Cart cart = (Cart)session.getAttribute("cart");
+        int flag = (int) session.getAttribute("flag");  // 标志在其他网站
 
         if(cart == null){
             cart = new Cart();
@@ -29,17 +30,19 @@ public class AddItemToCartServlet extends HttpServlet {
 
         CartService cartService = new CartService(cart);
 
-        if (cartService.containsItemId(workingItemId)) {
-            cartService.incrementQuantityByItemId(workingItemId);
-        } else {
-            CatalogService catalogService = new CatalogService();
-            boolean isInStock = catalogService.isItemInStock(workingItemId);
-            Item item = catalogService.getItem(workingItemId);
-            cartService.addItem(item, isInStock);
+        if(flag != 0){
+            if (cartService.containsItemId(workingItemId)) {
+                cartService.incrementQuantityByItemId(workingItemId);
+            } else {
+                CatalogService catalogService = new CatalogService();
+                boolean isInStock = catalogService.isItemInStock(workingItemId);
+                Item item = catalogService.getItem(workingItemId);
+                cartService.addItem(item, isInStock);
+            }
         }
 
+        session.setAttribute("flag",0);
         session.setAttribute("cart",cart);
         req.getRequestDispatcher(CART_FORM).forward(req,resp);
-//        resp.sendRedirect(CART_FORM);     // 注释内容或可解决页面刷新导致的购物车商品数量增加
     }
 }

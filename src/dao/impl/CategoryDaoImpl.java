@@ -2,7 +2,7 @@ package dao.impl;
 
 import dao.CategoryDao;
 import domain.Category;
-import persistence.DBUtil;
+import dao.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
