@@ -133,7 +133,7 @@ public class AccountDaoImpl implements AccountDao {
 
     @Override
     public Account getAccountByUsernameAndPassword(Account account) {
-        Account acc = new Account();
+        Account acc = null;
         try{
             Connection connection = DBUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(GET_ACCOUNT_BY_USERNAME_AND_PASSWORD_STRING);
@@ -141,6 +141,7 @@ public class AccountDaoImpl implements AccountDao {
             preparedStatement.setString(2, account.getPassword());
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
+                acc = new Account();
                 acc.setUsername(resultSet.getString(1));
                 acc.setEmail(resultSet.getString(2));
                 acc.setFirstName(resultSet.getString(3));

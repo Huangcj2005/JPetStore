@@ -31,4 +31,4 @@ public class ItemFormServlet extends HttpServlet {
     }
 }
 
-// 存在问题：在购物车页面刷新会引起session内item的数量增加   (尚待解决)
+// 存在问题：在购物车页面刷新会引起session内item的数量增加   (已部分解决)

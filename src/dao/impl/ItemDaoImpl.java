@@ -1,8 +1,8 @@
 package dao.impl;
 
+import dao.DBUtil;
 import dao.ItemDao;
 import domain.Item;
-import persistence.DBUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

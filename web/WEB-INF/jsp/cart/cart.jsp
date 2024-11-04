@@ -1,6 +1,7 @@
 <%@ page import="domain.Cart" %>
 <%@ page import="domain.CartItem" %>
 <%@ page import="java.util.List" %>
+<%@ page import="domain.Product" %>
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
@@ -69,15 +70,41 @@
         </c:if>
     </div>
 
-<%--    <div id="MyList">--%>
-<%--        <c:if test="${sessionScope.accountBean != null}">--%>
-<%--            <c:if test="${!sessionScope.accountBean.authenticated}">--%>
-<%--                <c:if test="${!empty sessionScope.accountBean.account.listOption}">--%>
-<%--                    <%@ include file="IncludeMyList.jsp"%>--%>
-<%--                </c:if>--%>
+    <div id="MyList">
+        <%
+            if(login_account!=null && login_account.isListOption()){
+                List<Product> myFavoriteList = (List<Product>) session.getAttribute("myFavoriteList");
+                if(myFavoriteList!=null){
+                    out.println("<p> Pet Favorites <br>" +
+                            "Shop for more of your favorite pets here.</p>" +
+                            "<ul>");
+                    for(Product product : myFavoriteList){
+                        out.println("<li><a href=productForm?productId="+product.getProductId()+">"+ product.getName() +"</a>("+product.getProductId()+")</li>");
+                    }
+                    out.println("</ul>");
+                }
+
+            }
+        %>
+<%--        <c:if test="${sessionScope.loginAccount != null}">--%>
+<%--        <c:if test="${!empty sessionScope.loginAccount.listOption}">--%>
+<%--            <c:if test="${!empty sessionScope.myFavoriteList}">--%>
+<%--                <p>Pet Favorites <br />--%>
+<%--                    Shop for more of your favorite pets here.</p>--%>
+<%--                <ul>--%>
+<%--                    <c:forEach var="product" items="${sessionScope.myList}">--%>
+<%--                        <li>--%>
+<%--                            <a href="productForm?productId=${product.productId}">${product.name}</a>--%>
+<%--                            (${product.productId})--%>
+<%--                        </li>--%>
+<%--                    </c:forEach>--%>
+<%--                </ul>--%>
+
 <%--            </c:if>--%>
+
 <%--        </c:if>--%>
-<%--    </div>--%>
+<%--        </c:if>--%>
+    </div>
 
     <div id="Separator">&nbsp;</div>
 </div>

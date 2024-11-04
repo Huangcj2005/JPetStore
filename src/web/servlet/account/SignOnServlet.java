@@ -26,13 +26,13 @@ public class SignOnServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         username = req.getParameter("username");
         password = req.getParameter("password");
-        verifyCode = req.getParameter("verifyCode");
+        //verifyCode = req.getParameter("verifyCode");
+        //cacheCode = (String) req.getSession().getAttribute("verifyCode");
 
-        cacheCode = (String) req.getSession().getAttribute("verifyCode");
 
         // 检验合法性
         if(!validate()){
-            req.setAttribute("signOnMsg",this.msg); // 用于jsp中获取错误提示信息
+            req.setAttribute("signOnMsg",msg); // 用于jsp中获取错误提示信息
             req.getRequestDispatcher(SIGN_ON_FORM).forward(req,resp);
         }else{
             AccountService accountService = new AccountService();
@@ -49,8 +49,8 @@ public class SignOnServlet extends HttpServlet {
                 // 页面右侧 favorite
                 if(loginAccount.isListOption()){
                     CatalogService catalogService = new CatalogService();
-                    List<Product> myList = catalogService.getProductListByCategory(loginAccount.getFavouriteCategoryId());
-                    session.setAttribute("myList",myList);
+                    List<Product> myFavoriteList = catalogService.getProductListByCategory(loginAccount.getFavouriteCategoryId());
+                    session.setAttribute("myFavoriteList",myFavoriteList);
                 }
 
                 resp.sendRedirect("mainForm");
@@ -59,14 +59,6 @@ public class SignOnServlet extends HttpServlet {
     }
 
     private boolean validate(){
-        if(this.verifyCode == null || this.verifyCode.equals("")){
-            msg = "请输入验证码！";
-            return false;
-        }
-        if(!this.verifyCode.equals(this.cacheCode)){
-            msg = "验证码错误！";
-            return false;
-        }
         if(this.username == null || this.username.equals("")){
             msg = "用户名不能为空！";
             return false;
@@ -75,6 +67,14 @@ public class SignOnServlet extends HttpServlet {
             msg = "密码不能为空！";
             return false;
         }
+//        if(this.verifyCode == null || this.verifyCode.isEmpty()){
+//            msg = "请输入验证码！";
+//            return false;
+//        }
+//        if(!this.verifyCode.equals(this.cacheCode)){
+//            msg = "验证码错误！";
+//            return false;
+//        }
         return true;
     }
 }

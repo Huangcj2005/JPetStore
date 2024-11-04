@@ -8,10 +8,9 @@
 
     <div id="Banner">
         <%
-            if(session.getAttribute("account") != null){
-                Account account = (Account)session.getAttribute("account");
-                if(account.isBannerOption()){
-                    out.println(account.getBannerName());
+            if(login_account != null){
+                if(login_account.isBannerOption()){
+                    out.println(login_account.getBannerName());
                 }
             }
         %>

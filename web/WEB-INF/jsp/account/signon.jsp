@@ -1,16 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Huang_cj
-  Date: 2024/10/27
-  Time: 14:55
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ include file="../common/top.jsp"%>
 
-</body>
-</html>
+<div id="Catalog">
+    <form action="signOn" method="post">
+        <p>Please enter your username and password.</p>
+        <c:if test="${requestScope.signOnMsg != null}">
+            <p><font color="red">${requestScope.signOnMsg}</font></p>
+        </c:if>
+        <p>Username:<input type="text" name="username"> <br/>
+            Password:<input type="password" name="password"> </p>
+        <input type="submit" value="Login">
+    </form>
+    Need a username and password?<a href="registForm">Register Now!</a>
+
+</div>
+
+<%@ include file="../common/bottom.jsp"%>
+

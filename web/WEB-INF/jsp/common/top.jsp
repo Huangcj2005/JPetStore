@@ -23,14 +23,21 @@
 
             <img align="middle" src="images/separator.gif" />
 
-            <a href="#">Sign In</a>
-            <a href="#">Sign Out</a>
+            <%
+                Account login_account = (Account) session.getAttribute("loginAccount");
+                if(login_account==null){
+                    out.println("<a href=signonForm"+"> Sign In </a>");
+                } else if (!login_account.getStatus().equals("OK")) {
+                    out.println("<a href=signonForm"+"> Sign In </a>");
+                } else {
+                    out.println(
+                        "<a href=#"+"> Sign Out </a>"+
+                        "<img align=middle src=images/separator.gif />"+
+                        "<a href=#"+"> My Account </a>"+
+                        "<img align=middle src=images/separator.gif />");
+                }
+            %>
 
-            <img align="middle" src="images/separator.gif" />
-
-            <a href="#">My Account</a>
-
-            <img align="middle" src="images/separator.gif" />
 
             <a href="help.html">?</a>
         </div>
