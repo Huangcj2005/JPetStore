@@ -34,6 +34,8 @@ public class NewAccountServlet extends HttpServlet {
     private String languagePreference;
     private boolean listOption;
     private boolean bannerOption;
+    private String cacheCode;   // 校验用
+    private String verifyCode;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,6 +56,9 @@ public class NewAccountServlet extends HttpServlet {
         languagePreference = req.getParameter("account.languagePreference");
         listOption = Boolean.parseBoolean(req.getParameter("account.listOption"));
         bannerOption = Boolean.parseBoolean(req.getParameter("account.bannerOption"));
+        verifyCode = req.getParameter("verifyCode");
+
+        cacheCode = (String) req.getSession().getAttribute("verifyCode");
 
         // 检验合法性
         if(!validate()){
@@ -70,6 +75,14 @@ public class NewAccountServlet extends HttpServlet {
     }
 
     private boolean validate(){
+        if(this.verifyCode == null || this.verifyCode.equals("")){
+            msg = "请输入验证码！";
+            return false;
+        }
+        if(!this.verifyCode.equals(this.cacheCode)){
+            msg = "验证码错误！";
+            return false;
+        }
         if(this.username == null || this.username.equals("")){
             msg = "用户名不能为空！";
             return false;
