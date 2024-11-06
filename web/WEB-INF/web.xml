@@ -66,13 +66,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>UpdateCartServlet</servlet-name>
-        <servlet-class>web.servlet.cart.UpdateCartItemServlet</servlet-class>
+        <servlet-name>RemoveCartServlet</servlet-name>
+        <servlet-class>web.servlet.cart.RemoveCartServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>UpdateCartServlet</servlet-name>
-        <url-pattern>/updateCart</url-pattern>
+        <servlet-name>RemoveCartServlet</servlet-name>
+        <url-pattern>/removeCart</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -82,7 +82,7 @@
 
     <servlet-mapping>
         <servlet-name>UpdateCartItemServlet</servlet-name>
-        <url-pattern>/removeCartItem</url-pattern>
+        <url-pattern>/updateCartItem</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -248,5 +248,78 @@
         <servlet-name>VerifyCodeServlet</servlet-name>
         <url-pattern>/verifyCode</url-pattern>
     </servlet-mapping>
+
+
+    <filter>
+        <filter-name>SignOnFilter</filter-name>
+        <filter-class>web.filter.SignOnFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SignOnFilter</filter-name>
+        <servlet-name>SignOnServlet</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>SignOffFilter</filter-name>
+        <filter-class>web.filter.SignOffFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SignOffFilter</filter-name>
+        <servlet-name>SignOffServlet</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>EditAccountFilter</filter-name>
+        <filter-class>web.filter.EditAccountFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EditAccountFilter</filter-name>
+        <servlet-name>EditAccountServlet</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AddItemToCartFilter</filter-name>
+        <filter-class>web.filter.AddItemToCartFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AddItemToCartFilter</filter-name>
+        <servlet-name>AddItemToCartServlet</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>RemoveCartFilter</filter-name>
+        <filter-class>web.filter.RemoveCartFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>RemoveCartFilter</filter-name>
+        <servlet-name>RemoveCartServlet</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>SearchProductFilter</filter-name>
+        <filter-class>web.filter.SearchProductFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SearchProductFilter</filter-name>
+        <servlet-name>SearchProductServlet</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>ConfirmFilter</filter-name>
+        <filter-class>web.filter.ConfirmFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>ConfirmFilter</filter-name>
+        <servlet-name>ConfirmFormServlet</servlet-name>
+    </filter-mapping>
+
+
 
 </web-app>
