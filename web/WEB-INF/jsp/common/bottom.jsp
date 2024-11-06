@@ -8,9 +8,9 @@
 
     <div id="Banner">
         <%
-            if(login_account != null){
-                if(login_account.isBannerOption()){
-                    out.println(login_account.getBannerName());
+            if(loginAccount != null){
+                if(loginAccount.isBannerOption()){
+                    out.println(loginAccount.getBannerName());
                 }
             }
         %>

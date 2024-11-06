@@ -72,7 +72,7 @@
 
     <div id="MyList">
         <%
-            if(login_account!=null && login_account.isListOption()){
+            if(loginAccount!=null && loginAccount.isListOption()){
                 List<Product> myFavoriteList = (List<Product>) session.getAttribute("myFavoriteList");
                 if(myFavoriteList!=null){
                     out.println("<p> Pet Favorites <br>" +
@@ -86,24 +86,6 @@
 
             }
         %>
-<%--        <c:if test="${sessionScope.loginAccount != null}">--%>
-<%--        <c:if test="${!empty sessionScope.loginAccount.listOption}">--%>
-<%--            <c:if test="${!empty sessionScope.myFavoriteList}">--%>
-<%--                <p>Pet Favorites <br />--%>
-<%--                    Shop for more of your favorite pets here.</p>--%>
-<%--                <ul>--%>
-<%--                    <c:forEach var="product" items="${sessionScope.myList}">--%>
-<%--                        <li>--%>
-<%--                            <a href="productForm?productId=${product.productId}">${product.name}</a>--%>
-<%--                            (${product.productId})--%>
-<%--                        </li>--%>
-<%--                    </c:forEach>--%>
-<%--                </ul>--%>
-
-<%--            </c:if>--%>
-
-<%--        </c:if>--%>
-<%--        </c:if>--%>
     </div>
 
     <div id="Separator">&nbsp;</div>

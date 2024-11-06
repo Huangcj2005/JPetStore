@@ -24,16 +24,16 @@
             <img align="middle" src="images/separator.gif" />
 
             <%
-                Account login_account = (Account) session.getAttribute("loginAccount");
-                if(login_account==null){
-                    out.println("<a href=signonForm"+"> Sign In </a>");
-                } else if (!login_account.getStatus().equals("OK")) {
-                    out.println("<a href=signonForm"+"> Sign In </a>");
+                Account loginAccount = (Account) session.getAttribute("loginAccount");
+                if(loginAccount==null){
+                    out.println("<a href=signonForm> Sign In </a>");
+                } else if (!loginAccount.getStatus().equals("OK")) {
+                    out.println("<a href=signonForm> Sign In </a>");
                 } else {
                     out.println(
                         "<a href=#"+"> Sign Out </a>"+
                         "<img align=middle src=images/separator.gif />"+
-                        "<a href=#"+"> My Account </a>"+
+                        "<a href=editAccountForm> My Account </a>"+
                         "<img align=middle src=images/separator.gif />");
                 }
             %>

@@ -11,43 +11,19 @@ import java.io.IOException;
 
 public class EditAccountServlet extends HttpServlet {
     private static final String EDIT_ACCOUNT_FORM = "/WEB-INF/jsp/account/editAccount.jsp";   // 编辑失败时跳转
+
     private String msg;
-    private String username;
+
     private String password;
     private String repeatedPassword;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private String address1;
-    private String address2;
-    private String city;
-    private String state;
-    private String zip;
-    private String country;
-    private String favouriteCategoryId;
-    private String languagePreference;
-    private boolean listOption;
-    private boolean bannerOption;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        username = req.getParameter("username");
+
+
         password = req.getParameter("password");
         repeatedPassword = req.getParameter("repeatedPassword");
-        firstName = req.getParameter("account.firstName");
-        lastName = req.getParameter("account.lastName");
-        email = req.getParameter("account.email");
-        phone = req.getParameter("account.req");
-        address1 = req.getParameter("account.address1");
-        address2 = req.getParameter("account.address2");
-        city = req.getParameter("account.city");
-        state = req.getParameter("account.state");
-        zip = req.getParameter("account.zip");
-        country = req.getParameter("account.country");
-        favouriteCategoryId = req.getParameter("account.favouriteCategoryId");
-        languagePreference = req.getParameter("account.languagePreference");
-        listOption = Boolean.parseBoolean(req.getParameter("account.listOption"));
-        bannerOption = Boolean.parseBoolean(req.getParameter("account.bannerOption"));
+
 
         // 检验合法性
         if(!validate()){
@@ -55,21 +31,23 @@ public class EditAccountServlet extends HttpServlet {
             req.getRequestDispatcher(EDIT_ACCOUNT_FORM).forward(req,resp);
         }else{
             AccountService accountService = new AccountService();
-            Account updateAccount = new Account();
-            initAccount(updateAccount);
-            accountService.updateAccount(updateAccount);  // 修改数据库信息
+            Account currentAccount = (Account) req.getSession().getAttribute("loginAccount");
+            initAccount(currentAccount,req);
+            accountService.updateAccount(currentAccount);  // 修改数据库信息
+
+            req.getSession().setAttribute("loginAccount",null);
 
             resp.sendRedirect("mainForm");    // 跳转回购物主界面
         }
 
     }
     private boolean validate(){
-        if(this.password == null || this.password.equals("")){
+        if(this.password == null || this.password.isEmpty()){
             msg = "密码不能为空！";
             return false;
         }
-        if(this.repeatedPassword == null || this.repeatedPassword.equals("")){
-            msg = "密码不能为空！";
+        if(this.repeatedPassword == null || this.repeatedPassword.isEmpty()){
+            msg = "请重复确认密码！";
             return false;
         }
         if(!this.password.equals(this.repeatedPassword)){
@@ -80,23 +58,21 @@ public class EditAccountServlet extends HttpServlet {
         return true;
     }
 
-    private void initAccount(Account account){
-        account.setUsername(this.username);
+    private void initAccount(Account account,HttpServletRequest req){
         account.setPassword(this.password);
-        account.setBannerOption(this.bannerOption);
-        account.setFirstName(this.firstName);
-        account.setLastName(this.lastName);
-        account.setEmail(this.email);
-        account.setPhone(this.phone);
-        account.setAddress1(this.address1);
-        account.setAddress2(this.address2);
-        account.setCity(this.city);
-        account.setState(this.state);
-        account.setZip(this.zip);
-        account.setCountry(this.country);
-        account.setFavouriteCategoryId(this.favouriteCategoryId);
-        account.setLanguagePreference(this.languagePreference);
-        account.setListOption(this.listOption);
-        account.setBannerOption(this.bannerOption);
+        account.setFirstName(req.getParameter("account.firstName"));
+        account.setLastName(req.getParameter("account.lastName"));
+        account.setEmail(req.getParameter("account.email"));
+        account.setPhone(req.getParameter("account.phone"));
+        account.setAddress1(req.getParameter("account.address1"));
+        account.setAddress2(req.getParameter("account.address2"));
+        account.setCity(req.getParameter("account.city"));
+        account.setState(req.getParameter("account.state"));
+        account.setZip(req.getParameter("account.zip"));
+        account.setCountry(req.getParameter("account.country"));
+        account.setLanguagePreference(req.getParameter("account.languagePreference"));
+        account.setFavouriteCategoryId(req.getParameter("account.favouriteCategoryId"));
+        account.setListOption(Boolean.parseBoolean(req.getParameter("account.listOption")));
+        account.setBannerOption(Boolean.parseBoolean(req.getParameter("account.bannerOption")));
     }
 }

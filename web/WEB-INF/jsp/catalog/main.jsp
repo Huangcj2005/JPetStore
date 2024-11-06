@@ -3,7 +3,14 @@
 
 <div id="Welcome">
     <div id="WelcomeContent">
-        <!-- 显示已登录用户的昵称 -->
+        <%
+            if(loginAccount!=null){
+                out.println("Welcome " + loginAccount.getFirstName() + " !");
+            }else {
+
+                out.println("<font color=red>Please Sign In</font>");
+            }
+        %>
     </div>
 </div>
 

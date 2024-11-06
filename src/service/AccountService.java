@@ -28,7 +28,7 @@ public class AccountService {
         accountDao.updateAccount(account);
         accountDao.updateProfile(account);
 
-        if (account.getPassword() != null && account.getPassword().length() > 0) {
+        if (account.getPassword() != null && !account.getPassword().isEmpty()) {
             accountDao.updateSignon(account);
         }
     }

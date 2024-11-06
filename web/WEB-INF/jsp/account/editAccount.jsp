@@ -1,16 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Huang_cj
-  Date: 2024/10/27
-  Time: 19:26
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ include file="../common/top.jsp"%>
 
-</body>
-</html>
+<div id="Catalog">
+    <form action="editAccount" method="post">
+        <h3>Edit User Information</h3>
+
+        <table>
+            <tr>
+                <td>User ID:</td>
+                <td>${sessionScope.loginAccount.username}</td>
+            </tr>
+            <tr>
+                <td>New password:</td>
+                <td><input type="text" name="password"></td>
+            </tr>
+            <tr>
+                <td>Repeat password:</td>
+                <td><input type="text" name="repeatedPassword"></td>
+            </tr>
+        </table>
+
+        <%@ include file="accountFields.jsp"%>
+
+        <input type="submit" value="Save Account Information">
+        <c:if test="${requestScope.editMsg != null}">
+            <p><font color="red">${requestScope.editMsg}</font></p>
+        </c:if>
+    </form>
+
+<%@ include file="../common/bottom.jsp"%>
