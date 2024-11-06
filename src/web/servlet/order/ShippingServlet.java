@@ -38,7 +38,7 @@ public class ShippingServlet extends HttpServlet {
         OrderService orderService = new OrderService();
         orderService.insertOrder(order);
 
-        session.setAttribute("order",order);
+        session.setAttribute("orderId",order.getOrderId());
 
         req.getRequestDispatcher(CONFIRM_ORDER_FORM).forward(req,resp);
     }
