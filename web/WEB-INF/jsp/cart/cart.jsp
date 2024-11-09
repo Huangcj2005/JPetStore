@@ -2,6 +2,7 @@
 <%@ page import="domain.CartItem" %>
 <%@ page import="java.util.List" %>
 <%@ page import="domain.Product" %>
+<%@ page import="service.CartService" %>
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
@@ -29,6 +30,7 @@
 
                 <%
                     Cart cart = (Cart) session.getAttribute("cart");
+                    CartService cartService = new CartService(cart);
                     if(cart.getNumberOfItems()==0){
                         out.println("<tr><td colspan=\"8\"><b>Your cart is empty.</b></td></tr>");
                     } else {
@@ -48,7 +50,7 @@
                             );
                         }
                         out.println("<tr>"+
-                                "<td colspan=7>Sub Total:$"+ cart.getSubTotal() +"<input type=\"submit\" value=\"Update Cart\"></td>" +
+                                "<td colspan=7>Sub Total:$"+ cartService.getSubTotal() +"<input type=\"submit\" value=\"Update Cart\"></td>" +
                                 "<td> </td>" +
                                 "</tr>");
                     }
