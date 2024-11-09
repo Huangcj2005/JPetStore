@@ -18,7 +18,10 @@ public class ViewOrderFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        Order order = (Order) session.getAttribute("order");
+        OrderService orderService = new OrderService();
+
+//        Order order = (Order) session.getAttribute("order");
+        Order order = orderService.getOrder((Integer) session.getAttribute("orderId"));  // 从数据库中依据订单号获取订单
         Account account = (Account) session.getAttribute("loginAccount");
 
         OrderService orderService = new OrderService();
