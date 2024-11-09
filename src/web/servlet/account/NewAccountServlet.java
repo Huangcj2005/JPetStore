@@ -75,23 +75,23 @@ public class NewAccountServlet extends HttpServlet {
     }
 
     private boolean validate(){
-        if(this.verifyCode == null || this.verifyCode.equals("")){
-            msg = "请输入验证码！";
-            return false;
-        }
-        if(!this.verifyCode.equals(this.cacheCode)){
-            msg = "验证码错误！";
-            return false;
-        }
-        if(this.username == null || this.username.equals("")){
+//        if(this.verifyCode == null || this.verifyCode.equals("")){
+//            msg = "请输入验证码！";
+//            return false;
+//        }
+//        if(!this.verifyCode.equals(this.cacheCode)){
+//            msg = "验证码错误！";
+//            return false;
+//        }
+        if(this.username == null || this.username.isEmpty()){
             msg = "用户名不能为空！";
             return false;
         }
-        if(this.password == null || this.password.equals("")){
+        if(this.password == null || this.password.isEmpty()){
             msg = "密码不能为空！";
             return false;
         }
-        if(this.repeatedPassword == null || this.repeatedPassword.equals("")){
+        if(this.repeatedPassword == null || this.repeatedPassword.isEmpty()){
             msg = "密码不能为空！";
             return false;
         }
@@ -106,7 +106,6 @@ public class NewAccountServlet extends HttpServlet {
     private void initAccount(Account account){
         account.setUsername(this.username);
         account.setPassword(this.password);
-        account.setBannerOption(this.bannerOption);
         account.setFirstName(this.firstName);
         account.setLastName(this.lastName);
         account.setEmail(this.email);

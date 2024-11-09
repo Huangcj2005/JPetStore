@@ -11,18 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class ViewOrderFormServlet extends HttpServlet {
+public class ViewOrderFromListFormServlet extends HttpServlet {
     private static final String VIEW_ORDER_FORM = "/WEB-INF/jsp/order/viewOrder.jsp";
     private static final String ERROR_FORM ="/WEB-INF/jsp/common/error.jsp";
     private String msg;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        Order order = (Order) session.getAttribute("order");
+        Order order;
         Account account = (Account) session.getAttribute("loginAccount");
 
         OrderService orderService = new OrderService();
-        orderService.insertOrder(order);       //将订单存入数据库
+
+        String orderId = req.getParameter("orderId");
+        order = orderService.getOrder(Integer.parseInt(orderId));
+        session.setAttribute("order", order);
+
 
 
         if (account.getUsername().equals(order.getUsername())) {    // 校验

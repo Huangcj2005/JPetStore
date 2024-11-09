@@ -62,10 +62,8 @@ public class AccountDaoImpl implements AccountDao {
                   AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY""";
 
     private static final String INSERT_ACCOUNT_STRING = """
-            INSERT INTO ACCOUNT
-                  (EMAIL, FIRSTNAME, LASTNAME, STATUS, ADDR1, ADDR2, CITY, STATE, ZIP, COUNTRY, PHONE, USERID)
-                VALUES
-                  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""";
+            INSERT INTO ACCOUNT (EMAIL, FIRSTNAME, LASTNAME, STATUS, ADDR1, ADDR2, CITY, STATE, ZIP, COUNTRY, PHONE, USERID)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""";
     private static final String INSERT_PROFILE_STRING = """
             INSERT INTO PROFILE (LANGPREF, FAVCATEGORY, USERID)
                 VALUES (?, ?, ?)""";
@@ -174,6 +172,7 @@ public class AccountDaoImpl implements AccountDao {
         try{
             Connection connection = DBUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ACCOUNT_STRING);
+
             preparedStatement.setString(1, account.getEmail());
             preparedStatement.setString(2, account.getFirstName());
             preparedStatement.setString(3, account.getLastName());
@@ -186,6 +185,7 @@ public class AccountDaoImpl implements AccountDao {
             preparedStatement.setString(10, account.getCountry());
             preparedStatement.setString(11, account.getPhone());
             preparedStatement.setString(12, account.getUsername());
+
             preparedStatement.executeUpdate();
             preparedStatement.close();
             connection.close();

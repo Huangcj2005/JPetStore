@@ -10,7 +10,7 @@
             Password:<input type="password" name="password"> </p>
         <input type="submit" value="Login">
     </form>
-    Need a username and password?<a href="registForm">Register Now!</a>
+    Need a username and password?<a href="newAccountForm">Register Now!</a>
 
 </div>
 

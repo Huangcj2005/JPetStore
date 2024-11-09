@@ -27,8 +27,7 @@ public class NewOrderFormServlet extends HttpServlet {
         if (loginAccount == null) {   // 未登录 跳转至登录
 //            this.msg = ("You must sign on before attempting to check out.  Please sign on and try checking out again.");
 //            req.setAttribute("signOnMsg",this.msg);
-            req.getRequestDispatcher("signonForm").forward(req, resp);
-            //重定向改成了转发（目前未有问题）
+            resp.sendRedirect("signonForm");
         } else if (cart != null) {  // 跳转至新建订单页面
             order.initOrder(loginAccount, cart);
             session.setAttribute("order",order);    // 将 order 放进session中

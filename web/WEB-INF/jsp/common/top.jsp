@@ -27,11 +27,9 @@
                 Account loginAccount = (Account) session.getAttribute("loginAccount");
                 if(loginAccount==null){
                     out.println("<a href=signonForm> Sign In </a>");
-                } else if (!loginAccount.getStatus().equals("OK")) {
-                    out.println("<a href=signonForm> Sign In </a>");
                 } else {
                     out.println(
-                        "<a href=#"+"> Sign Out </a>"+
+                        "<a href=signOff"+"> Sign Out </a>"+
                         "<img align=middle src=images/separator.gif />"+
                         "<a href=editAccountForm> My Account </a>"+
                         "<img align=middle src=images/separator.gif />");
