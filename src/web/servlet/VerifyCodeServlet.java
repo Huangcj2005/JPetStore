@@ -22,7 +22,7 @@ public class VerifyCodeServlet extends HttpServlet {
         String data = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789abcdefghijklmnpqrstuvwxyz";
         Random random = new Random();
 
-        BufferedImage bufferedImage = new BufferedImage(height,width,BufferedImage.TYPE_INT_RGB);
+        BufferedImage bufferedImage = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         Graphics graphics = bufferedImage.getGraphics();    // 获取绘画对象(画板)
 
         // 设置边框
