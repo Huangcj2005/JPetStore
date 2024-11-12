@@ -1,5 +1,7 @@
 package web.servlet.order;
 
+import domain.Order;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import java.io.IOException;
 public class NewOrderServlet extends HttpServlet {
     private static final String SHIPPING_FORM ="/WEB-INF/jsp/order/shipping.jsp";
     private static final String CONFIRM_ORDER_FORM ="/WEB-INF/jsp/order/confirmOrder.jsp";
+
     private boolean shippingAddressRequired = false;
 
     // 接收表单的数据
@@ -20,7 +23,8 @@ public class NewOrderServlet extends HttpServlet {
             shippingAddressRequired = false;
             req.getRequestDispatcher(SHIPPING_FORM).forward(req,resp);
         } else{    // 跳转至确认订单
-            req.getRequestDispatcher(CONFIRM_ORDER_FORM);
+            req.getRequestDispatcher(CONFIRM_ORDER_FORM).forward(req,resp);
         }
     }
+    Order order = new Order();;
 }

@@ -1,16 +1,28 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Huang_cj
-  Date: 2024/10/27
-  Time: 20:27
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ page import="java.util.List" %>
+<%@ page import="domain.Order" %>
+<%@ include file="../common/top.jsp"%>
 
-</body>
-</html>
+<h2>My Orders</h2>
+
+<table>
+    <tr>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>Total Price</th>
+    </tr>
+
+    <%
+        List<Order> orderList = (List<Order>) session.getAttribute("orderList");
+        for (Order order : orderList) {
+            out.println("<tr>" +
+                    "<td><a href=viewOrderFromListForm?orderId="+order.getOrderId()+">"+order.getOrderId()+"</a></td>" +
+                    "<td>"+order.getOrderDate()+"</td>" +
+                    "<td>$"+order.getTotalPrice()+"</td>" +
+                    "</tr>");
+        }
+    %>
+</table>
+
+<%@ include file="../common/bottom.jsp"%>
+
+

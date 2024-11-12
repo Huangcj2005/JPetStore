@@ -2,10 +2,8 @@ package web.filter;
 
 import dao.LogDao;
 import dao.impl.LogDaoImpl;
-import domain.Account;
 
 import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,15 +21,12 @@ public class RemoveCartFilter implements Filter {
         servletRequest.setCharacterEncoding("utf-8");
         servletResponse.setContentType("text/html;charset=utf-8");
 
-        HttpServletRequest httpServletRequest = (HttpServletRequest )servletRequest;
-        Account loginAccount = (Account) httpServletRequest.getSession().getAttribute("loginAccount");
-
         SimpleDateFormat sdf = new SimpleDateFormat();
         sdf.applyPattern("yyyy-MM-dd HH:mm:ss a");
         Date date = new Date();
 
         String time = sdf.format(date);
-        String username = loginAccount.getUsername();
+        String username = servletRequest.getParameter("username");
         String workingItemId = servletRequest.getParameter("workingItemId");
 
         String msg = "Remove " + workingItemId + " from cart";

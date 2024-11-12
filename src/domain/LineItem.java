@@ -56,6 +56,7 @@ public class LineItem implements Serializable {
     }
 
     public BigDecimal getTotal() {
+        calculateTotal();
         return total;
     }
 
@@ -65,7 +66,6 @@ public class LineItem implements Serializable {
 
     public void setItem(Item item) {
         this.item = item;
-        calculateTotal();
     }
 
     public int getQuantity() {
@@ -74,7 +74,6 @@ public class LineItem implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-        calculateTotal();
     }
 
     private void calculateTotal() {
