@@ -1,7 +1,13 @@
 package service;
 
-import dao.*;
-import dao.impl.*;
+import dao.ItemDao;
+import dao.LineItemDao;
+import dao.OrderDao;
+import dao.SequenceDao;
+import dao.impl.ItemDaoImpl;
+import dao.impl.LineItemDaoImpl;
+import dao.impl.OrderDaoImpl;
+import dao.impl.SequenceDaoImpl;
 import domain.Item;
 import domain.LineItem;
 import domain.Order;
@@ -17,14 +23,12 @@ public class OrderService {
     private OrderDao orderDao;
     private SequenceDao sequenceDao;
     private LineItemDao lineItemDao;
-    private ProductDao productDao;
 
     public OrderService(){
         this.itemDao = new ItemDaoImpl();
         this.orderDao = new OrderDaoImpl();
         this.sequenceDao = new SequenceDaoImpl();
         this.lineItemDao = new LineItemDaoImpl();
-        this.productDao = new ProductDaoImpl();
     }
 
     public void insertOrder(Order order) {
@@ -56,7 +60,6 @@ public class OrderService {
             LineItem lineItem = (LineItem) order.getLineItems().get(i);
             Item item = itemDao.getItem(lineItem.getItemId());
             item.setQuantity(itemDao.getInventoryQuantity(lineItem.getItemId()));
-            item.setProduct(productDao.getProduct(item.getProductId()));
             lineItem.setItem(item);
         }
 

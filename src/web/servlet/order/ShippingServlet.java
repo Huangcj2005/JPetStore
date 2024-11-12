@@ -33,10 +33,12 @@ public class ShippingServlet extends HttpServlet {
         this.shipState = req.getParameter("shipState");
         this.shipZip = req.getParameter("shipZip");
         this.shipCountry = req.getParameter("shipCountry");
-
         initShipOrder(order);   // 更新订单信息
 
-        session.setAttribute("order",order);  //将更新后的订单信息放入session
+        OrderService orderService = new OrderService();
+        orderService.insertOrder(order);
+
+        session.setAttribute("orderId",order.getOrderId());
 
         req.getRequestDispatcher(CONFIRM_ORDER_FORM).forward(req,resp);
     }

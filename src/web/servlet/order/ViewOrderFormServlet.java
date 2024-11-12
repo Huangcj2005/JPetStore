@@ -20,14 +20,11 @@ public class ViewOrderFormServlet extends HttpServlet {
         HttpSession session = req.getSession();
         OrderService orderService = new OrderService();
 
-        Order order = (Order) session.getAttribute("order");
+//        Order order = (Order) session.getAttribute("order");
+        Order order = orderService.getOrder((Integer) session.getAttribute("orderId"));  // 从数据库中依据订单号获取订单
         Account account = (Account) session.getAttribute("loginAccount");
 
-        orderService.insertOrder(order);       //将订单存入数据库
-
-
         if (account.getUsername().equals(order.getUsername())) {    // 校验
-            session.setAttribute("cart", null);
             req.getRequestDispatcher(VIEW_ORDER_FORM).forward(req,resp);
         } else {
             order = null;

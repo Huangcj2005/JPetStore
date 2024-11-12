@@ -171,7 +171,6 @@ public class ItemDaoImpl implements ItemDao {
                 item.setAttribute4(resultSet.getString("attribute4"));
                 item.setAttribute5(resultSet.getString("attribute5"));
                 item.setQuantity(resultSet.getInt("quantity"));
-
             }
             resultSet.close();
             preparedStatement.close();

@@ -1,32 +1,30 @@
 <%@ include file="../common/top.jsp"%>
 
-<div id="Catalog">
-    <form action="newAccount" method="post">
+<div id="Catalog"><stripes:form
+        beanclass="org.mybatis.jpetstore.web.actions.AccountActionBean"
+        focus="">
 
-
-    <h3>New User Information</h3>
+    <h3>User Information</h3>
 
     <table>
         <tr>
             <td>User ID:</td>
-            <td><input type="text" name="username"></td>
+            <td><stripes:text name="username" /></td>
         </tr>
         <tr>
             <td>New password:</td>
-            <td><input type="text" name="password"></td>
+            <td><stripes:text name="password" /></td>
         </tr>
         <tr>
             <td>Repeat password:</td>
-            <td><input type="text" name="repeatedPassword"></td>
+            <td><stripes:text name="repeatedPassword" /></td>
         </tr>
     </table>
 
     <%@ include file="accountFields.jsp"%>
 
-    <input type="submit" value="Save Account Information">
+    <stripes:submit name="newAccount" value="Save Account Information" />
 
-
-    </form>
-</div>
+</stripes:form></div>
 
 <%@ include file="../common/bottom.jsp"%>

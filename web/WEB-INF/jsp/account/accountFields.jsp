@@ -50,53 +50,29 @@
         <td>Language Preference:</td>
         <td>
             <select name="account.languagePreference">
-                <option value="English" <%
-                    if (loginAccount != null && loginAccount.getLanguagePreference().equals("English"))
-                        out.println("selected=selected");%>>English</option>
-                <option value="Chinese" <%
-                    if (loginAccount != null && loginAccount.getLanguagePreference().equals("Chinese"))
-                        out.println("selected=selected");
-                %>>Chinese</option>
+                <option value="English" <%if(loginAccount.getLanguagePreference().equals("English"))out.println("selected=selected");%>>English</option>
+                <option value="Chinese" <%if(loginAccount.getLanguagePreference().equals("Chinese"))out.println("selected=selected");%>>Chinese</option>
             </select>
     </tr>
     <tr>
         <td>Favourite Category:</td>
         <td>
             <select name="account.favouriteCategoryId">
-                <option value="BIRDS" <%
-                    if (loginAccount != null && loginAccount.getFavouriteCategoryId().equals("BIRDS"))
-                        out.println("selected=selected");
-                %>>birds</option>
-                <option value="CATS" <%
-                    if (loginAccount != null && loginAccount.getFavouriteCategoryId().equals("CATS"))
-                        out.println("selected=selected");
-                %>>cats</option>
-                <option value="DOGS" <%
-                    if (loginAccount != null && loginAccount.getFavouriteCategoryId().equals("DOGS"))
-                        out.println("selected=selected");
-                %>>dogs</option>
-                <option value="FISH" <%
-                    if (loginAccount != null && loginAccount.getFavouriteCategoryId().equals("FISH"))
-                        out.println("selected=selected");
-                %>>fish</option>
-                <option value="REPTILES" <%
-                    if (loginAccount != null && loginAccount.getFavouriteCategoryId().equals("REPTILES"))
-                        out.println("selected=selected");
-                %>>reptiles</option>
+                <option value="BIRDS" <%if(loginAccount.getFavouriteCategoryId().equals("BIRDS"))out.println("selected=selected");%>>birds</option>
+                <option value="CATS" <%if(loginAccount.getFavouriteCategoryId().equals("CATS"))out.println("selected=selected");%>>cats</option>
+                <option value="DOGS" <%if(loginAccount.getFavouriteCategoryId().equals("DOGS"))out.println("selected=selected");%>>dogs</option>
+                <option value="FISH" <%if(loginAccount.getFavouriteCategoryId().equals("FISH"))out.println("selected=selected");%>>fish</option>
+                <option value="REPTILES" <%if(loginAccount.getFavouriteCategoryId().equals("REPTILES"))out.println("selected=selected");%>>reptiles</option>
             </select>
         </td>
     </tr>
     <tr>
         <td>Enable MyList</td>
-        <td><input type="checkbox" name="account.listOption" <%
-        if(loginAccount != null&&loginAccount.isListOption())
-            out.println("checked");%>></td>
+        <td><input type="checkbox" name="account.listOption" <%if(loginAccount.isListOption())out.println("checked");%>></td>
     </tr>
     <tr>
         <td>Enable MyBanner</td>
-        <td><input type="checkbox" name="account.bannerOption" <%
-        if(loginAccount != null&&loginAccount.isBannerOption())
-            out.println("checked");%>></td>
+        <td><input type="checkbox" name="account.bannerOption" <%if(loginAccount.isBannerOption())out.println("checked");%>></td>
     </tr>
 
 </table>

@@ -15,7 +15,7 @@
 
         <h2>Shopping Cart</h2>
 
-        <form action="updateCartItem" method="post">
+        <form action="updateCart" method="post">
             <table>
                 <tr>
                     <th><b>Item ID</b></th>
@@ -45,24 +45,31 @@
                                     "<td><input  type=text name="+ cartItem.getItem().getItemId() +" value="+ cartItem.getQuantity() +" ></td>"+
                                     "<td>$"+ cartItem.getItem().getListPrice()+"</td>"+
                                     "<td>$"+ cartItem.getTotal()+"</td>"+
-                                    "<td><a href=removeCart?cartItemId="+ cartItem.getItem().getItemId() +" class=Button>Remove</a></td>"+
+                                    "<td><a href=removeCartItem?cartItemId="+ cartItem.getItem().getItemId() +" class=Button>Remove</a></td>"+
                                 "</tr>"
                             );
                         }
-                        out.println("<tr>"+
-                                "<td colspan=7>Sub Total:$"+ cartService.getSubTotal() +"<input type=\"submit\" value=\"Update Cart\"></td>" +
-                                "<td> </td>" +
-                                "</tr>");
                     }
                 %>
+
+                <tr>
+                    <td colspan="7">
+                        Sub Total:
+                        <%
+                            out.println("$"+cartService.getSubTotal());
+                        %>
+                        <input type="submit" value="Update Cart">
+                    </td>
+                    <td> </td>
+                </tr>
             </table>
         </form>
 
-        <%
-            if(cart.getNumberOfItems() > 0)
-                out.println("<a href=\"newOrderForm\" class=\"Button\">Proceed to Checkout</a>");
-        %>
 
+
+        <c:if test="${sessionScope.cart.numberOfItems > 0}">
+            <a href="newOrderForm" class="Button">Proceed to Checkout</a>
+        </c:if>
     </div>
 
     <div id="MyList">

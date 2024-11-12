@@ -77,7 +77,7 @@
 
     <servlet>
         <servlet-name>UpdateCartItemServlet</servlet-name>
-        <servlet-class>web.servlet.cart.UpdateCartItemServlet</servlet-class>
+        <servlet-class>web.servlet.cart.RemoveCartServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -197,16 +197,6 @@
     <servlet-mapping>
         <servlet-name>ViewOrderFormServlet</servlet-name>
         <url-pattern>/viewOrderForm</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>ViewOrderFromListFormServlet</servlet-name>
-        <servlet-class>web.servlet.order.ViewOrderFromListFormServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ViewOrderFromListFormServlet</servlet-name>
-        <url-pattern>/viewOrderFromListForm</url-pattern>
     </servlet-mapping>
 
     <servlet>

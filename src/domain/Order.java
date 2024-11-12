@@ -5,7 +5,7 @@ import service.CartService;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,9 +13,12 @@ public class Order implements Serializable {
     private int orderId;
     private String username;
     private Date orderDate;
-    private BigDecimal totalPrice;
-    private String billToFirstName;
-    private String billToLastName;
+    private String shipAddress1;
+    private String shipAddress2;
+    private String shipCity;
+    private String shipState;
+    private String shipZip;
+    private String shipCountry;
     private String billAddress1;
     private String billAddress2;
     private String billCity;
@@ -23,20 +26,17 @@ public class Order implements Serializable {
     private String billZip;
     private String billCountry;
     private String courier;
+    private BigDecimal totalPrice;
+    private String billToFirstName;
+    private String billToLastName;
     private String shipToFirstName;
     private String shipToLastName;
-    private String shipAddress1;
-    private String shipAddress2;
-    private String shipCity;
-    private String shipState;
-    private String shipZip;
-    private String shipCountry;
     private String creditCard;
     private String expiryDate;
     private String cardType;
     private String locale;
     private String status;
-    private List<LineItem> lineItems = new ArrayList<>();
+    private List<LineItem> lineItems = new ArrayList<LineItem>();
 
     public int getOrderId() {
         return orderId;
@@ -257,9 +257,7 @@ public class Order implements Serializable {
     public void initOrder(Account account, Cart cart) {
 
         username = account.getUsername();
-
-        java.util.Date date = new java.util.Date();
-        orderDate = new Date(date.getTime());
+        orderDate = new Date();
 
         shipToFirstName = account.getFirstName();
         shipToLastName = account.getLastName();

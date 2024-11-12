@@ -26,7 +26,5 @@
             <p><font color="red">${requestScope.editMsg}</font></p>
         </c:if>
     </form>
-    <a href="viewOrderList">My Orders</a>
-</div>
 
 <%@ include file="../common/bottom.jsp"%>
