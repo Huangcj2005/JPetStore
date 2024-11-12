@@ -5,6 +5,7 @@ import dao.impl.LogDaoImpl;
 import domain.Account;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ public class SignOffFilter implements Filter {
         servletRequest.setCharacterEncoding("utf-8");
         servletResponse.setContentType("text/html;charset=utf-8");
 
-        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        HttpServletRequest httpServletRequest = (HttpServletRequest )servletRequest;
         Account loginAccount = (Account) httpServletRequest.getSession().getAttribute("loginAccount");
 
         SimpleDateFormat sdf = new SimpleDateFormat();

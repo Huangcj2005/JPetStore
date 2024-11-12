@@ -59,11 +59,11 @@ public class SignOnServlet extends HttpServlet {
     }
 
     private boolean validate(){
-        if(this.username == null || this.username.isEmpty()){
+        if(this.username == null || this.username.equals("")){
             msg = "用户名不能为空！";
             return false;
         }
-        if(this.password == null || this.password.isEmpty()){
+        if(this.password == null || this.password.equals("")){
             msg = "密码不能为空！";
             return false;
         }
