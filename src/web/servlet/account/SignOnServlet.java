@@ -26,8 +26,8 @@ public class SignOnServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         username = req.getParameter("username");
         password = req.getParameter("password");
-        //verifyCode = req.getParameter("verifyCode");
-        //cacheCode = (String) req.getSession().getAttribute("verifyCode");
+        verifyCode = req.getParameter("verifyCode");
+        cacheCode = (String) req.getSession().getAttribute("verifyCode");
 
 
         // 检验合法性
@@ -67,14 +67,14 @@ public class SignOnServlet extends HttpServlet {
             msg = "密码不能为空！";
             return false;
         }
-//        if(this.verifyCode == null || this.verifyCode.isEmpty()){
-//            msg = "请输入验证码！";
-//            return false;
-//        }
-//        if(!this.verifyCode.equals(this.cacheCode)){
-//            msg = "验证码错误！";
-//            return false;
-//        }
+        if(this.verifyCode == null || this.verifyCode.isEmpty()){
+            msg = "请输入验证码！";
+            return false;
+        }
+        if(!this.verifyCode.equals(this.cacheCode)){
+            msg = "验证码错误！";
+            return false;
+        }
         return true;
     }
 }
