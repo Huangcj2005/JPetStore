@@ -5,6 +5,7 @@ body {
     font-size: 2ex;
     color: #333;
     background-color: #444;
+    width: 1080px;
 }
 
 pre {
@@ -319,4 +320,32 @@ body>#Banner {
     float: left;
     background-color:#ccc;
     text-align:left;
+}
+
+#productAutoComplete{
+    background:#ccc;
+    position:relative;
+    top:-46px;
+    left:84px;
+    width:189px;
+    display: none;
+}
+
+#productAutoList{
+    margin:0;
+    padding: 0;
+    border: 1px solid #aaa;
+}
+
+.productAutoItem{
+    list-style: none;
+    height:18.5px;
+    line-height: 18.5px;
+    font-size:11px;
+    text-align: left;
+    padding-left: 6px;
+    padding-top: 3px;
+    border-bottom: 1px solid #666;
+    color:#005e21;
+
 }

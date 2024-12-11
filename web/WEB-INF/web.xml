@@ -13,17 +13,6 @@
         <servlet-name>MainFormServlet</servlet-name>
         <url-pattern>/mainForm</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>SearchProductServlet</servlet-name>
-        <servlet-class>web.servlet.SearchProductServlet</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>SearchProductServlet</servlet-name>
-        <url-pattern>/searchProduct</url-pattern>
-    </servlet-mapping>
-
 
     <servlet>
         <servlet-name>CategoryFormServlet</servlet-name>
@@ -259,6 +248,16 @@
         <url-pattern>/verifyCode</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ProductAutoCompleteServlet</servlet-name>
+        <servlet-class>web.servlet.ProductAutoCompleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProductAutoCompleteServlet</servlet-name>
+        <url-pattern>/ProductAuto</url-pattern>
+    </servlet-mapping>
+
 
     <filter>
         <filter-name>SignOnFilter</filter-name>
@@ -317,7 +316,7 @@
 
     <filter-mapping>
         <filter-name>SearchProductFilter</filter-name>
-        <servlet-name>SearchProductServlet</servlet-name>
+        <servlet-name>ProductAutoCompleteServlet</servlet-name>
     </filter-mapping>
 
     <filter>
