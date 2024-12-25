@@ -30,12 +30,14 @@ public class SearchProductFilter implements Filter {
         sdf.applyPattern("yyyy-MM-dd HH:mm:ss a");
         Date date = new Date();
 
-        String time = sdf.format(date);
-        String username = loginAccount.getUsername();
-        String keyword = servletRequest.getParameter("keyword");
+        if(loginAccount != null){
+            String time = sdf.format(date);
+            String username = loginAccount.getUsername();
+            String keyword = servletRequest.getParameter("keyword");
 
-        String msg = "Search products by " + keyword;
-        logDao.insertLog(username,time,msg);
+            String msg = "Search products by " + keyword;
+            logDao.insertLog(username,time,msg);
+        }
 
         filterChain.doFilter(servletRequest,servletResponse);
 
