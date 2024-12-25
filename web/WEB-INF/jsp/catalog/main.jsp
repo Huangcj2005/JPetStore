@@ -34,20 +34,24 @@
         </div>
     </div>
 
+    <div id="hover">
+        <ul id="hoverProductList">
+        </ul>
+    </div>
     <div id="MainImage">
         <div id="MainImageContent">
             <map name="estoremap">
-                <area alt="Birds" coords="72,2,280,250"
+                <area alt="Birds" coords="72,2,280,250" class="mainImage"
                       href="categoryForm?categoryId=BIRDS" shape="RECT" />
-                <area alt="Fish" coords="2,180,72,250"
+                <area alt="Fish" coords="2,180,72,250" class="mainImage"
                       href="categoryForm?categoryId=FISH" shape="RECT" />
-                <area alt="Dogs" coords="60,250,130,320"
+                <area alt="Dogs" coords="60,250,130,320" class="mainImage"
                       href="categoryForm?categoryId=DOGS" shape="RECT" />
-                <area alt="Reptiles" coords="140,270,210,340"
+                <area alt="Reptiles" coords="140,270,210,340" class="mainImage"
                       href="categoryForm?categoryId=REPTILES" shape="RECT" />
-                <area alt="Cats" coords="225,240,295,310"
+                <area alt="Cats" coords="225,240,295,310" class="mainImage"
                       href="categoryForm?categoryId=CATS" shape="RECT" />
-                <area alt="Birds" coords="280,180,350,250"
+                <area alt="Birds" coords="280,180,350,250" class="mainImage"
                       href="categoryForm?categoryId=BIRDS" shape="RECT" />
             </map>
             <img height="355" src="images/splash.gif" align="middle"
@@ -56,5 +60,6 @@
 
     <div id="Separator">&nbsp;</div>
 </div>
+<script src="js/mainImageHover.js"></script>
 
 <%@ include file="../common/bottom.jsp"%>

@@ -1,5 +1,6 @@
-package web.servlet;
+package web.servlet.js;
 
+import com.alibaba.fastjson.JSON;
 import domain.Product;
 import service.CatalogService;
 
@@ -10,14 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import com.alibaba.fastjson.JSON;
 
-public class ProductAutoCompleteServlet extends HttpServlet {
+public class MainImageHoverServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String keyword = req.getParameter("keyword");
-        CatalogService service = new CatalogService();
-        List<Product> productList = service.searchProductList(keyword);
+        String categoryId = req.getParameter("categoryId");
+        CatalogService catalogService = new CatalogService();
+        List<Product> productList = catalogService.getProductListByCategory(categoryId);
 
         String result = JSON.toJSONString(productList);
         System.out.println(result);
@@ -25,6 +25,5 @@ public class ProductAutoCompleteServlet extends HttpServlet {
         resp.setContentType("text/json");
         PrintWriter out = resp.getWriter();
         out.println(result);
-
     }
 }

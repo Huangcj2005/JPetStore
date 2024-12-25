@@ -249,13 +249,33 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>SearchProductServlet</servlet-name>
+        <servlet-class>web.servlet.SearchProductServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchProductServlet</servlet-name>
+        <url-pattern>/SearchProduct</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>ProductAutoCompleteServlet</servlet-name>
-        <servlet-class>web.servlet.ProductAutoCompleteServlet</servlet-class>
+        <servlet-class>web.servlet.js.ProductAutoCompleteServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>ProductAutoCompleteServlet</servlet-name>
         <url-pattern>/ProductAuto</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MainImageHoverServlet</servlet-name>
+        <servlet-class>web.servlet.js.MainImageHoverServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainImageHoverServlet</servlet-name>
+        <url-pattern>/MainImageHover</url-pattern>
     </servlet-mapping>
 
 
