@@ -9,7 +9,8 @@
     <table>
         <tr>
             <td>User ID:</td>
-            <td><input type="text" name="username"></td>
+            <td><input type="text" name="username" id="username"></td>
+            <td id="feedback"></td>
         </tr>
         <tr>
             <td>New password:</td>
@@ -24,8 +25,7 @@
     <%@ include file="accountFields.jsp"%>
 
     <input type="submit" value="Save Account Information">
-
-
+    <script src="js/checkUsername.js"></script>
     </form>
 </div>
 

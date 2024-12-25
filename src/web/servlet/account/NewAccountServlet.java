@@ -1,5 +1,6 @@
 package web.servlet.account;
 
+import com.alibaba.fastjson.JSON;
 import domain.Account;
 import domain.Product;
 import service.AccountService;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class NewAccountServlet extends HttpServlet {
@@ -60,6 +62,13 @@ public class NewAccountServlet extends HttpServlet {
 
         cacheCode = (String) req.getSession().getAttribute("verifyCode");
 
+        String name = JSON.toJSONString(this.username);
+        System.out.println(name);
+
+        resp.setContentType("text/json");
+        PrintWriter out = resp.getWriter();
+        out.println(name);
+
         // 检验合法性
         if(!validate()){
             req.setAttribute("registerMsg",this.msg); // 用于jsp中获取错误提示信息
@@ -75,18 +84,19 @@ public class NewAccountServlet extends HttpServlet {
     }
 
     private boolean validate(){
-//        if(this.verifyCode == null || this.verifyCode.equals("")){
-//            msg = "请输入验证码！";
-//            return false;
-//        }
-//        if(!this.verifyCode.equals(this.cacheCode)){
-//            msg = "验证码错误！";
-//            return false;
-//        }
-        if(this.username == null || this.username.isEmpty()){
-            msg = "用户名不能为空！";
+        if(this.verifyCode == null || this.verifyCode.equals("")){
+            msg = "请输入验证码！";
             return false;
         }
+        if(!this.verifyCode.equals(this.cacheCode)){
+            msg = "验证码错误！";
+            return false;
+        }
+
+//        if(this.username == null || this.username.isEmpty()){
+//            msg = "用户名不能为空！";
+//            return false;
+//        }
         if(this.password == null || this.password.isEmpty()){
             msg = "密码不能为空！";
             return false;

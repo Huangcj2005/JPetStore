@@ -11,7 +11,7 @@
             </tr>
             <tr>
                 <td>New password:</td>
-                <td><input type="text" name="password"></td>
+                <td><input type="text" name="password" /></td>
             </tr>
             <tr>
                 <td>Repeat password:</td>
@@ -25,8 +25,10 @@
         <c:if test="${requestScope.editMsg != null}">
             <p><font color="red">${requestScope.editMsg}</font></p>
         </c:if>
+        <script src="js/checkUsername.js"></script>
     </form>
     <a href="viewOrderList">My Orders</a>
 </div>
 
 <%@ include file="../common/bottom.jsp"%>
+
