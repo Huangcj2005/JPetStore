@@ -6,18 +6,14 @@ $(function (){
         var imageName = e.target.alt;
         // console.log(imageName);
 
-        // 设置内容&展示
-        $('#hover').css("display","block").css("position","absolute")
-            .css("top",(mousePos.y - yOffset) + "px").css("left",(mousePos.x + xOffset) + "px");
-
         // 依据 imageName查询内容后展示
         $.ajax({
             type:       'GET',
             url:        'http://localhost:8080/MyWebShop_Web_exploded/MainImageHover?categoryId='+imageName,
             success:     function (data){
-                console(data);
+                console.log(data);
                 var hoverProductListHTML = '';
-                for (var id = 0;i<data.length;i ++){
+                for (var i = 0;i<data.length;i ++){
                     hoverProductListHTML += '<li class=\"hoverItem\" data-productId="';
                     hoverProductListHTML += data[i].productId;
                     hoverProductListHTML +='">';
@@ -27,8 +23,14 @@ $(function (){
                     hoverProductListHTML += '</li>';
                 }
                 $('#hoverProductList').html(hoverProductListHTML);
-                $("#hover").css("display","block").css("position","absolute")
-                    .css("top",(mousePos.y - yOffset) + "px").css("left",(mousePos.x + xOffset) + "px");
+                if (mousePos.x > 1000){
+                    $("#hover").css("display","block").css("position","absolute")
+                        .css("top",(mousePos.y - yOffset) + "px").css("left",(mousePos.x + xOffset) + "px");
+                }else{
+                    $("#hover").css("display","block").css("position","absolute")
+                        .css("top",(mousePos.y - yOffset) + "px").css("left",(mousePos.x + xOffset - 189) + "px");
+                }
+
             },
             error:       function (errorMsg){
                 console.log(errorMsg);

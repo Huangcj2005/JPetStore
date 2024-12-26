@@ -8,7 +8,7 @@ $(function (){
                 success     :function (data){
                     console.log(data);
                     var productListHTML = '';
-                    for (var id = 0;i<data.length;i ++){
+                    for (var i = 0;i<data.length;i ++){
                         productListHTML += '<li class=\"productAutoItem\" data-productId="';
                         productListHTML += data[i].productId;
                         productListHTML +='">';

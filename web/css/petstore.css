@@ -5,7 +5,7 @@ body {
     font-size: 2ex;
     color: #333;
     background-color: #444;
-    width: 1080px;
+    width: 1500px;
 }
 
 pre {
@@ -331,7 +331,7 @@ body>#Banner {
     display: none;
 }
 
-#productAutoList{
+#productAutoList,#hoverProductList{
     margin:0;
     padding: 0;
     border: 1px solid #aaa;
@@ -358,18 +358,12 @@ body>#Banner {
     /*line-height:18px;*/
     /*border:1px solid #e1e3e2;*/
     /*padding:5px;*/
-    background:#ccc;
+    background-color: #e2e2e2;
     position:relative;
     top:-46px;
     left:84px;
     width:189px;
     display: none;
-}
-
-#hoverProductList{
-    margin:0;
-    padding: 0;
-    border: 1px solid #aaa;
 }
 
 .hoverItem{
@@ -382,4 +376,5 @@ body>#Banner {
     padding-top: 3px;
     border-bottom: 1px solid #666;
     color:#005e21;
+    opacity: 0.7;
 }

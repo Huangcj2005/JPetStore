@@ -4,15 +4,16 @@ import java.sql.*;
 
 public class DBUtil {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/pet_store";
+    private static final String URL = "jdbc:mysql://localhost:3306/petstore";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "#Yan4992211#";
+    private static final String PASSWORD = "15168797115";
 
     public static Connection getConnection() {
         Connection connection = null;
         try{
-            Class.forName(DRIVER);
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+            System.out.println(connection);
 
         } catch (Exception e) {
             e.printStackTrace();

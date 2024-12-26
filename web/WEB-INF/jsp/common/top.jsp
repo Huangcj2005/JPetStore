@@ -5,7 +5,7 @@
 
 <head>
     <title>XX网宠物商店</title>
-    <link rel="StyleSheet" href="css/petstore.css" type="text/css" media="screen" />
+    <link rel="StyleSheet" href="css/petstore.css?v=1" type="text/css" media="screen" />
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
