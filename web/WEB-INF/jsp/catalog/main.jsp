@@ -60,6 +60,6 @@
 
     <div id="Separator">&nbsp;</div>
 </div>
-<script src="js/mainImageHover.js?v=1"></script>
+<script src="js/mainImageHover.js?v=2"></script>
 
 <%@ include file="../common/bottom.jsp"%>

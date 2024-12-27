@@ -42,7 +42,7 @@
                                     "<td>" + cartItem.getItem().getProduct().getProductId() + "</td>" +
                                     "<td>" + cartItem.getItem().getAttribute1() + cartItem.getItem().getProduct().getName() +"</td>"+
                                     "<td>" + cartItem.isInStock() + "</td>" +
-                                    "<td><input  type=text name="+ cartItem.getItem().getItemId() +" value="+ cartItem.getQuantity() +" ></td>"+
+                                    "<td><input type=text name="+ cartItem.getItem().getItemId() +" value="+ cartItem.getQuantity() +" ></td>"+
                                     "<td>$"+ cartItem.getItem().getListPrice()+"</td>"+
                                     "<td>$"+ cartItem.getTotal()+"</td>"+
                                     "<td><a href=removeCart?cartItemId="+ cartItem.getItem().getItemId() +" class=Button>Remove</a></td>"+
@@ -50,11 +50,12 @@
                             );
                         }
                         out.println("<tr>"+
-                                "<td colspan=7>Sub Total:$"+ cartService.getSubTotal() +"<input type=\"submit\" value=\"Update Cart\"></td>" +
+                                "<td colspan=7 id=\"Total\">Sub Total:$"+ cartService.getSubTotal() +"<input type=\"submit\" value=\"Update Cart\"></td>" +
                                 "<td> </td>" +
                                 "</tr>");
                     }
                 %>
+                <script src="js/cartAlter.js"></script>
             </table>
         </form>
 

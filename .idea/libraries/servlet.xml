@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="servlet">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../Web包/servlet/javax.servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../Web包/servlet/javax.servlet.jsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../Web包/servlet/javax.servlet.jsp.jstl.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../../../Web包/servlet" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../Web包/servlet" recursive="false" />
+  </library>
+</component>

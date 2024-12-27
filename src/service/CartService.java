@@ -24,6 +24,10 @@ public class CartService {
         return cart.getItemList().iterator();
     }
 
+    public CartItem getCartItemById(String itemId) {
+        return cart.getItemMap().get(itemId);
+    }
+
     public boolean containsItemId(String itemId) {
         return cart.getItemMap().containsKey(itemId);
     }
