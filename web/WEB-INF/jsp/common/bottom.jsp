@@ -19,6 +19,5 @@
 </div>
 <script src="js/productAuto.js?v=2"></script>
 
-<div id="test">111</div>
 </body>
 </html>

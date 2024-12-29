@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="WEB">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/JavaScript/fastjson-1.2.83.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/JavaScript/fastjson-2.0.53.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/servlet/jsp-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/servlet/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/SQL/mysql-connector-j-8.0.33.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

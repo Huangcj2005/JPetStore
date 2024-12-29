@@ -5,6 +5,16 @@
 <%@ page import="service.CartService" %>
 <%@ include file="../common/top.jsp"%>
 
+<div id="Welcome">
+    <div id="WelcomeContent">
+        <%
+            if(loginAccount==null){
+                out.println("<font color=red>Please Sign In</font>");
+            }
+        %>
+    </div>
+</div>
+
 <div id="BackLink">
     <a href="mainForm">Return to Main Menu</a>
 </div>
@@ -44,18 +54,18 @@
                                     "<td>" + cartItem.isInStock() + "</td>" +
                                     "<td><input type=text name="+ cartItem.getItem().getItemId() +" value="+ cartItem.getQuantity() +" ></td>"+
                                     "<td>$"+ cartItem.getItem().getListPrice()+"</td>"+
-                                    "<td>$"+ cartItem.getTotal()+"</td>"+
+                                    "<td class=total total="+ cartItem.getTotal()+">$"+ cartItem.getTotal()+"</td>"+
                                     "<td><a href=removeCart?cartItemId="+ cartItem.getItem().getItemId() +" class=Button>Remove</a></td>"+
                                 "</tr>"
                             );
                         }
-                        out.println("<tr>"+
-                                "<td colspan=7 id=\"Total\">Sub Total:$"+ cartService.getSubTotal() +"<input type=\"submit\" value=\"Update Cart\"></td>" +
-                                "<td> </td>" +
+                        out.println("<tr class=sub>" +
+                                "<td colspan=5> </td>"+
+                                "<td colspan=3 subTotal="+ cartService.getSubTotal() +">Sub Total:$"+ cartService.getSubTotal() +"</td>" +
                                 "</tr>");
                     }
                 %>
-                <script src="js/cartAlter.js"></script>
+                <script src="js/cartAlter.js?v=1"></script>
             </table>
         </form>
 
